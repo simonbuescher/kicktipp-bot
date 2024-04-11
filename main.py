@@ -124,7 +124,7 @@ class Client:
         game_id = table_data[3].find_all("input")[0].get("id")[15:-14]
         home = table_data[1].text
         away = table_data[2].text
-        quotes = tuple(float(n.strip()) for n in table_data[4].text.split('|'))
+        quotes = tuple(float(n.strip()) for n in table_data[4].text.removeprefix("Quote: ").split('/'))
 
         return Game(game_id, home, away, quotes)
 
